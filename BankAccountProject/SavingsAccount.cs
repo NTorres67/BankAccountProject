@@ -105,11 +105,12 @@ namespace BankAccountProject
             {
                 Console.WriteLine("");
                 Console.WriteLine("Insufficient funds for withdrawal. Minimun savings balance requirement of $300.");
+                this.balanceSavings = balanceSavings + amountWithdraw;
                 Console.WriteLine("");
                 Console.WriteLine("Please enter the amount to withdraw.");
                 amountWithdraw = int.Parse(Console.ReadLine());
                 this.balanceSavings = balanceSavings - amountWithdraw;
-                this.balanceSavings = balanceSavings + amountWithdraw;
+               
                 Console.WriteLine("");
                 Console.WriteLine("Current Balance: $" + balanceSavings);
                 Console.WriteLine("");
