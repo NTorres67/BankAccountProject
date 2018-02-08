@@ -10,18 +10,23 @@ namespace BankAccountProject
     {
         static void Main(string[] args)
         {
+            int userInput;
+
             ClientInformation userclientInformation = new ClientInformation();
             Accounts userAccounts = new Accounts();
             CheckingAccount userCheckingAccount = new CheckingAccount();
-            SavingAccount userSavingAccount = new SavingAccount();
+            SavingsAccount userSavingsAccount = new SavingsAccount();
 
-            
-            int userInput;
 
+
+            string balance = " ";
+            string deposit = " ";
+            string withdraw = " ";
             
 
             do
             {
+                Console.WriteLine("");
                 Console.WriteLine("Welcome to the Corgi Banking Application.");
                 Console.WriteLine("What would you like to do?");
                 Console.WriteLine("Type 1 to view client information.");
@@ -32,6 +37,7 @@ namespace BankAccountProject
                 Console.WriteLine("");
 
                 userInput = int.Parse(Console.ReadLine());
+                
 
                 switch (userInput)
                 {
@@ -45,15 +51,67 @@ namespace BankAccountProject
                         break;
 
                     case 2:
-                        //// declare client balances
+                        //// View Balances
+                        Console.WriteLine("Type \"a\" to review checking account balance.");
+                        Console.WriteLine("");
+                        Console.WriteLine("Type \"b\" to review savings account balance.");
+                        Console.WriteLine("");
+                        balance = Console.ReadLine();
+                        balance = balance.ToLower();
+
+                        if (balance == "a")
+                        {
+                            userCheckingAccount.CheckingAccountNumber();
+                            userCheckingAccount.CheckingBalance();
+                            Console.WriteLine("");
+                        }
+                        if (balance == "b")
+                        {
+                            userSavingsAccount.SavingsAccountNumber();
+                            userSavingsAccount.SavingsBalance();
+
+                            Console.Write("");
+                        }
                         break;
 
                     case 3:
-                        //// to deposit funds
+                        //// to deposit funds and get balances
+                        Console.WriteLine("Type \"c\" to deposit funds into checking account.");
+                        Console.WriteLine("");
+                        Console.WriteLine("Type \"d\" to deposit funds into savings account.");
+                        deposit = Console.ReadLine();
+                        deposit = deposit.ToLower();
+
+                        if (deposit == "c")
+                        {
+                            userCheckingAccount.BalanceAfterDeposit();
+                        }
+
+                        if (deposit == "d")
+                        {
+                            userSavingsAccount.BalanceAfterDeposit();
+                        }
+
                         break;
 
                     case 4:
-                        //// to withdraw funds
+                        //// to withdraw funds and get balances
+                        Console.WriteLine("Type \"e\" to withdraw funds from checking account.");
+                        Console.WriteLine("");
+                        Console.WriteLine("Type \"f\" to withdraw funds from savings account.");
+                        Console.WriteLine("");
+                        withdraw = Console.ReadLine();
+                        withdraw = withdraw.ToLower();
+
+                        if (withdraw == "e")
+                        {
+                            userCheckingAccount.BalanceAfterWithdraw();
+                        }
+
+                        if (withdraw == "f")
+                        {
+                            userSavingsAccount.BalanceAfterWithdraw();
+                        }
                         break;
 
                     case 5:
@@ -67,6 +125,7 @@ namespace BankAccountProject
             } while (userInput != 5);
             Console.Write("");
             Console.WriteLine("Thank you for using Corgi Banking. Have a nice day.");
+            Console.WriteLine("");
 
 
         }

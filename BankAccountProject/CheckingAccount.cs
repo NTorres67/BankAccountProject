@@ -54,7 +54,7 @@ namespace BankAccountProject
         public CheckingAccount()
         {
             this.accountNumberChecking = "1234 28";
-            this.balanceChecking = 500;
+            this.balanceChecking = 1000;
         }
 
         public CheckingAccount(string accountNumberChecking, double balanceChecking, string accountType, double amountDeposit, double amountWithdraw)
@@ -68,10 +68,18 @@ namespace BankAccountProject
 
         //// Methods
 
+        //// View Checking Account Number
+        public void CheckingAccountNumber()
+        {
+            Console.WriteLine("Checking Account Number: " + accountNumberChecking);
+        }
+        
+
         //// View balance
         public void CheckingBalance()
         {
-            Console.WriteLine("Current Balance: " + balanceChecking);
+            Console.WriteLine("Current Balance: $" + balanceChecking);
+            
         }
 
 
@@ -82,16 +90,26 @@ namespace BankAccountProject
         //// Balance after a deposit
         public void BalanceAfterDeposit()
         {
+            Console.WriteLine("");
+            Console.WriteLine("Please enter the amount of the deposit.");
+            amountDeposit = int.Parse(Console.ReadLine());
             this.balanceChecking = balanceChecking + amountDeposit;
-            Console.WriteLine("Current Balance: " + balanceChecking);
+            Console.WriteLine("");
+            Console.WriteLine("Current checking account Balance: $" + balanceChecking);
+            Console.WriteLine("");
         }
 
 
         //// Balance afer a withdraw
         public void BalanceAfterWithdraw()
         {
+            Console.WriteLine("");
+            Console.WriteLine("Please enter the amount to withdraw.");
+            amountWithdraw = int.Parse(Console.ReadLine());
             this.balanceChecking = balanceChecking - amountWithdraw;
-            Console.WriteLine("Current balance: " + balanceChecking);
+            Console.WriteLine("");
+            Console.WriteLine("Current checking account balance: $" + balanceChecking);
+            Console.WriteLine("");
         }
 
     }
